@@ -1,7 +1,6 @@
 import * as functions from 'firebase-functions';
 const express = require("express");
-// const cors = require("cors");
-// import cors from "cors";
+const cors = require("cors");
 // Constructing a schema, using GraphQL schema language
 import typeDefs from "./schema/schema";
 
@@ -13,7 +12,6 @@ const { ApolloServer } = require("apollo-server-express");
 
 
 const server = new ApolloServer({
-    cors: false,
     typeDefs,
     resolvers,
     playground: true,
@@ -23,7 +21,7 @@ const server = new ApolloServer({
 // Setup express cloud function
 const app = express();
 
-// app.use(cors({ origin: true }));
+app.use(cors({ origin: true }));
 
 let allowCrossDomain = function (req:any, res:any, next:any) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -36,7 +34,7 @@ app.use(allowCrossDomain);
 server.applyMiddleware({
     app,
     path: "/",
-    cors: false
+    cors: true
 });
 
 exports.graphql = functions.https.onRequest(app);
