@@ -1,0 +1,44 @@
+## Compiled JavaScript files
+**/*.js
+**/*.js.map
+
+# Typescript v1 declaration files
+typings/
+
+node_modules/
+database/
+
+map-finder-service.json
+
+
+
+# query FeedSearchQuery($userID: ID!){
+#   results(userID:$userID){
+#     data{
+#       geometry{
+#         location{
+#           lat
+#         }
+#       }
+#     }
+#     userID
+#     docID
+#     }
+# }
+
+# {
+#   "userID":"5hlpT0dlh5bnhxo1d5PiZXukmcz2"
+# }
+
+# ----------up worked--------
+
+
+
+# ---------first query---------
+# query FeedSearchQuery($userID: ID!){
+#   results(userID:$userID){
+#     keyword
+#     docID
+#     }
+# }
+# --------------------------
